@@ -7,19 +7,16 @@
       <h1>Zaloguj się</h1>
       <p>Zaloguj się za pomocą imienia i nazwiska</p>
       <form>
-        <Input imgName="login" placeholder="Imię Nazwisko"/>
-        <Input imgName="password" placeholder="Hasło"/>
-        <Input imgName="password" placeholder="Powtórz hasło"/>     
-        <button class="login_button">Zaloguj się</button>
+        <Input imgName="login" placeholder="Imię Nazwisko" inputType="text" id="login"/>
+        <Input imgName="password" placeholder="Hasło" inputType="password" id="password"/>
+        <Input imgName="password" placeholder="Powtórz hasło" inputType="password" id="password2"/>     
+        <NuxtLink to="/Home" class="login__button">Zaloguj się</NuxtLink>
       </form>
     </div>
   </div>
 </template>
 
 <style scoped>
-body {
-  background-color: #f5f5f5;
-}
 .container {
   background-image: url('~/assets/img/bg.png');
   background-size: cover;
@@ -52,7 +49,9 @@ p {
   color: white;
   margin-bottom: 50px;
 }
-.login_button {
+.login__button {
+  display: block;
+  text-decoration: none;
   background-color: white;
   color: #0069ff;
   padding: 18px 0;

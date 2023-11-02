@@ -1,14 +1,17 @@
 <script setup>
     defineProps({
         imgName: String,
-        placeholder: String
+        placeholder: String,
+        inputType: String,
+        id: String
     })
+    const imgUrl = (name) => new URL(`../assets/img/${name}-icon.png`, import.meta.url)   
 </script>
 
 <template>
   <div class="input_container">
-    <img src="~/assets/img/login-icon.png" :alt="imgName" class="icon">
-    <input type="text" id="input" class="custom_input" :placeholder="placeholder" />
+    <img :src="imgUrl(imgName)" :alt="imgName" class="icon">
+    <input :type="inputType" :id="id" class="custom_input" :placeholder="placeholder" />
   </div>
 </template>
 
