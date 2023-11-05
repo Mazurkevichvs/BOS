@@ -13,7 +13,7 @@
         <NuxtLink to="/Home" class="login__button">Zaloguj się</NuxtLink>
       </form>
     </div>
-  </div>
+  </div> 
 </template>
 
 <style scoped>

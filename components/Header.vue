@@ -2,12 +2,15 @@
   <header>
     <div class="logo">
       <img src="~/assets/img/logo.png" alt="WSB Merito" />
-      <p class="username">Name Surname</p>
+      <p class="username">Imię Nazwisko</p>
     </div>
-    <div class="logout">
+    <NuxtLink to="/">
+      <div class="logout">
       <img src="~/assets/img/logout.png" alt="" />
       <p>Wyjść</p>
     </div>
+    </NuxtLink>
+    
   </header>
 </template>
 
@@ -18,6 +21,10 @@ header {
   align-items: center;
   color: #000;
   margin: 40px 0;
+  a {
+    text-decoration: none;
+    color: #000;
+  }
 }
 .username {
   font-size: 32px;
@@ -27,10 +34,17 @@ header {
 .logout {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  padding: 3px;
   p {
     font-size: 32px;
     font-weight: 600;
     margin-left: 10px;
+  }
+  &:hover {
+    border: 1px solid #000;
+    border-radius: 10px;
+
   }
 }
 .logo {

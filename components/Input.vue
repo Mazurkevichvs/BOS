@@ -4,13 +4,12 @@
         placeholder: String,
         inputType: String,
         id: String
-    })
-    const imgUrl = (name) => new URL(`../assets/img/${name}-icon.png`, import.meta.url)   
+    })  
 </script>
 
 <template>
   <div class="input_container">
-    <img :src="imgUrl(imgName)" :alt="imgName" class="icon">
+    <img :src="`_nuxt/assets/img/${imgName}-icon.png`" :alt="imgName" class="icon">
     <input :type="inputType" :id="id" class="custom_input" :placeholder="placeholder" />
   </div>
 </template>

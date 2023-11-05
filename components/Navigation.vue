@@ -1,13 +1,13 @@
 <template>
   <div class="navigation">
-    <div class="nav__home">
+    <div class="nav__page">
       <img src="~assets/img/home-icon.png" alt="Home" class="home__icon" />
       <p>Home</p>
     </div>
     <div class="add__btn">
       <img src="~assets/img/plus.png" alt="add" />
     </div>
-    <div>
+      <div class="nav__page">
       <p>Oceny</p>
       <img src="~assets/img/marks-icon.png" alt="Oceny" class="marks__icon" />
     </div>
@@ -53,5 +53,14 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  &:hover {
+    background-color: #1778ff;
+  }
 }
+.nav__page {
+    cursor: pointer;
+    &:hover {
+      color: #2979F2;
+    }
+  }
 </style>
