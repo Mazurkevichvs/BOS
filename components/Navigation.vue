@@ -20,6 +20,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
+  margin-bottom: 40px;
   width: 350px;
   background-color: #fff;
   border-radius: 60px;
