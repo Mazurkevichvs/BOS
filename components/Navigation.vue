@@ -7,7 +7,7 @@
     <div class="add__btn">
       <img src="~assets/img/plus.png" alt="add" />
     </div>
-      <div class="nav__page">
+    <div class="nav__page">
       <p>Oceny</p>
       <img src="~assets/img/marks-icon.png" alt="Oceny" class="marks__icon" />
     </div>
@@ -21,7 +21,8 @@
   align-items: center;
   margin-top: 20px;
   margin-bottom: 40px;
-  width: 350px;
+  max-width: 350px;
+  width: 100%;
   background-color: #fff;
   border-radius: 60px;
   padding: 10px 25px;
@@ -43,8 +44,6 @@
 }
 
 .add__btn {
-  font-size: 50px;
-  font-weight: 600;
   border-radius: 50%;
   background-color: #0069ff;
   height: 55px;
@@ -58,9 +57,39 @@
   }
 }
 .nav__page {
-    cursor: pointer;
-    &:hover {
-      color: #2979F2;
-    }
+  cursor: pointer;
+  &:hover {
+    color: #2979f2;
   }
+}
+
+@media screen and (max-width: 425px) {
+  .navigation {
+    max-width: 300px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    position: sticky;
+    bottom: 0;
+  } 
+  .home__icon {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+}
+.marks__icon {
+  margin-left: 10px;
+  width: 25px;
+}
+.nav__page {
+  font-size: 14px;
+}
+.add__btn {
+  height: 50px;
+  width: 50px;
+  img {
+    width: 20px;
+  }
+}
+}
 </style>

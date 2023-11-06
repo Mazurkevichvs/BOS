@@ -44,4 +44,14 @@ input {
     color: #FFF;
     font-weight: 400;
 }
+
+@media screen and (max-width: 425px) {
+  .custom_input {
+    font-size: 14px;
+  }
+
+  ::placeholder {
+    font-size: 14px;
+}
+}
 </style>

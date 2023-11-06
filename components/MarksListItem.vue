@@ -3,9 +3,11 @@
         <div class="mark__item__value">
             5
         </div>
+        <div class="mark__item__names">
         <p class="mark__item__title">Zaawansowane projektowanie aplikacji mobilnych</p>
         <p class="mark__item__subtitle">mgr inż. Szymon Guzik</p>
-        <p class="mark__item__subtitle">Wykład</p>
+        <p class="mark__item__subtitle class__type">Wykład</p>
+        </div>
         <div class="mark__item__icons">
             <img src="~assets/img/edit-icon.png" alt="">
             <img src="~assets/img/delete-icon.png" alt="">
@@ -19,10 +21,6 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    p {
-        width: 25%;
-        text-align: center;
-    }
 }
     .mark__item__value {
         color:#000;
@@ -35,6 +33,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .mark__item__names {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        p {       
+        text-align: center;
+    }
     }
     .mark__item__title {
         color:#000;
@@ -51,6 +58,33 @@
             &:last-of-type {
                 margin-left: 20px;
             }
+        }
+    }
+    @media screen and (max-width: 425px) {
+        .mark__item__wrapper {
+            margin-bottom: 25px;
+        }
+        .class__type {
+            display: none;
+        }
+        .mark__item__value {
+            width: 50px;
+            height: 50px;
+        }
+        .mark__item__names {
+            flex-direction: column;
+            width: 60%;
+            text-align: left;
+            align-items: baseline;
+            p {
+                text-align: left;
+            }
+        }
+        .mark__item__subtitle {
+            font-size: 14px;
+        }
+        img {
+            width: 24px;
         }
     }
 </style>

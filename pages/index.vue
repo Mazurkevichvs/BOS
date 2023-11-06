@@ -26,6 +26,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 0 20px;
 }
 .logo__login {
   width: 500px;
@@ -36,7 +37,7 @@
   text-align: center;
   padding: 50px 90px;
   border-radius: 40px;
-  width: 500px;
+  max-width: 500px;
 }
 
 h1 {
@@ -59,5 +60,25 @@ p {
   border-radius: 10px;
   cursor: pointer;
   width: 100%;
+}
+
+@media screen and (max-width: 425px) {
+  .logo__login {
+  max-width: 300px;
+  margin-bottom: 30px;
+}
+.login__form__container {
+  padding: 50px 40px;
+  max-width: 350px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+p {
+  font-size: 14px;
+  margin-bottom: 50px;
+}
 }
 </style>

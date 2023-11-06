@@ -29,6 +29,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 20px;
 }
 .wrapper {
   max-width: 1060px;
@@ -52,6 +53,27 @@ main {
   cursor: pointer;
   &:hover {
     color: #0083d5;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  main {
+    flex-direction: column-reverse;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 20px;
+    height: 100%;
+    justify-content: flex-end
+  }
+  .inner__header {
+    margin-bottom: 20px;
+  }
+  .inner__title {
+    font-size: 20px;
+  }
+  .inner__link {
+    font-size: 12px;
   }
 }
 </style>
