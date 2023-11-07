@@ -19,7 +19,7 @@ header {
   justify-content: space-between;
   align-items: center;
   color: #000;
-  margin: 40px 0;
+  padding: 40px 0;
   a {
     text-decoration: none;
     color: #000;
@@ -49,11 +49,34 @@ header {
   display: flex;
   align-items: center;
 }
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  header {
+    padding: 30px 20px;
+  }
+  .logo {
+    img {
+      width: 100px;
+    }
+  }
+  .username {
+  font-size: 28px;
+  margin-left: 10px;
+}
+.logout {
+  padding: 0px;
+  p {
+    font-size: 28px;
+    margin-left: 5px;
+  }
+  img {
+    width:40px
+  }
+}
+}
 
 @media screen and (max-width: 425px) {
   header {
-    margin: 25px 0;
-    padding: 0 30px;
+    padding: 25px 30px;
   }
   .logo {
     img {

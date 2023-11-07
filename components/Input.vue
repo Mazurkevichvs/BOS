@@ -3,14 +3,21 @@
         imgName: String,
         placeholder: String,
         inputType: String,
-        id: String
+        id: String,
     })  
+    const emits = defineEmits();
+    const emitValue = (newValue) => {
+  value.value = newValue;
+  emits('update:modelValue', value.value);
+};
+    const value = ref('')
+
 </script>
 
 <template>
   <div class="input_container">
     <img :src="`_nuxt/assets/img/${imgName}-icon.png`" :alt="imgName" class="icon">
-    <input :type="inputType" :id="id" class="custom_input" :placeholder="placeholder" />
+    <input @input="emitValue($event)" v-model="value" :type="inputType" :id="id" class="custom_input" :placeholder="placeholder" required/>
   </div>
 </template>
 

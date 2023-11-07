@@ -1,4 +1,25 @@
-<script setup></script>
+<script setup>
+const login = ref('');
+const password = ref('');
+const password2 = ref('');
+const error = ref(null);
+
+const validateForm = (e) => {
+  e.preventDefault()
+  error.value = null;
+
+  if (!login.value || !password.value || !password2.value) {
+    error.value = 'Wszystkie pola są wymagane';
+  } else if (password.value !== password2.value) {
+    error.value = 'Wprowadź poprawne hasło';
+  } else {
+    console.log(123)
+    // navigateTo('/Home')
+  }
+  console.log(login.value, password.value, password2.value)
+};
+
+</script>
 
 <template>
   <div class="container">
@@ -7,13 +28,13 @@
       <h1>Zaloguj się</h1>
       <p>Zaloguj się za pomocą imienia i nazwiska</p>
       <form>
-        <Input imgName="login" placeholder="Imię Nazwisko" inputType="text" id="login"/>
-        <Input imgName="password" placeholder="Hasło" inputType="password" id="password"/>
-        <Input imgName="password" placeholder="Powtórz hasło" inputType="password" id="password2"/>     
-        <NuxtLink to="/Home" class="login__button">Zaloguj się</NuxtLink>
+        <Input v-model="login" imgName="login" placeholder="Imię Nazwisko" inputType="text" id="login" />
+        <Input v-model="password" imgName="password" placeholder="Hasło" inputType="password" id="password" />
+        <Input v-model="password2" imgName="password" placeholder="Powtórz hasło" inputType="password" id="password2" />
+        <button @click="validateForm" class="login__button">Zaloguj się</button>
       </form>
     </div>
-  </div> 
+  </div>
 </template>
 
 <style scoped>
@@ -61,24 +82,33 @@ p {
   cursor: pointer;
   width: 100%;
 }
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .logo__login {
+    width: 450px;
+    margin-bottom: 40px;
+  }
+  .login__form__container {
+    padding: 50px 70px;
+  }
+}
 
 @media screen and (max-width: 425px) {
   .logo__login {
-  max-width: 300px;
-  margin-bottom: 30px;
-}
-.login__form__container {
-  padding: 50px 40px;
-  max-width: 350px;
-}
+    max-width: 300px;
+    margin-bottom: 30px;
+  }
+  .login__form__container {
+    padding: 50px 40px;
+    max-width: 350px;
+  }
 
-h1 {
-  font-size: 28px;
-}
+  h1 {
+    font-size: 28px;
+  }
 
-p {
-  font-size: 14px;
-  margin-bottom: 50px;
-}
+  p {
+    font-size: 14px;
+    margin-bottom: 50px;
+  }
 }
 </style>

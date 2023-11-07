@@ -62,6 +62,12 @@
     color: #2979f2;
   }
 }
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .navigation {
+  margin-bottom: 30px;
+  padding: 10px 25px;
+  }
+}
 
 @media screen and (max-width: 425px) {
   .navigation {
@@ -70,7 +76,7 @@
     margin-bottom: 20px;
     padding: 10px 20px;
     position: sticky;
-    bottom: 0;
+    bottom: 20px;
   } 
   .home__icon {
   margin-right: 10px;

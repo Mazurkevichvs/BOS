@@ -56,6 +56,12 @@ main {
   }
 }
 
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .inner__header {
+    margin-bottom: 30px;
+  }
+}
+
 @media screen and (max-width: 425px) {
   main {
     flex-direction: column-reverse;
