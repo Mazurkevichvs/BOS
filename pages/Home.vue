@@ -62,7 +62,7 @@ main {
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 430px) {
   main {
     flex-direction: column-reverse;
     border-radius: 20px;

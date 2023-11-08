@@ -1,5 +1,6 @@
 <script setup>
 const isHomePage = inject('isHomePage');
+console.log(isHomePage)
 </script>
 
 <template>
@@ -81,7 +82,7 @@ const isHomePage = inject('isHomePage');
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 430px) {
   .navigation {
     max-width: 300px;
     margin-top: 30px;

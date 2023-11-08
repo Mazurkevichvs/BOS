@@ -56,7 +56,7 @@ input {
   font-weight: 400;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 430px) {
   .custom_input {
     font-size: 14px;
   }

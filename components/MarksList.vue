@@ -1,10 +1,11 @@
 <script setup>
 import {SUBJECTLIST} from '../assets/subjectList'
 const isHomePage = inject('isHomePage')
+const filteredSubjects = () => isHomePage ? SUBJECTLIST.slice(0, 5) : SUBJECTLIST
 </script>
 
 <template>
-    <section v-for="(item, index) in SUBJECTLIST" class="marks__list">
-         <MarksListItem :item="item" />
+    <section class="marks__list">
+         <MarksListItem v-for="(subject, index) in filteredSubjects()" :subject="subject" :key="`${index}_${subject.subjectName}`"/>
     </section>
 </template>

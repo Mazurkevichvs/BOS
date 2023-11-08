@@ -30,7 +30,7 @@ export const SUBJECTLIST = [
     form: 'Ćwiczenia',
   },
   {
-    mark: 'Zal',
+    mark: '1',
     subjectName: 'Praktyka zawodowa',
     teacher: 'mgr inż. Norbert Sacha',
     form: 'Ćwiczenia',
@@ -42,7 +42,7 @@ export const SUBJECTLIST = [
     form: 'Wykład',
   },
   {
-    mark: 'Nzal',
+    mark: '2',
     subjectName: 'Praktyka zawodowa sem.6',
     teacher: 'dr Katarzyna Sokołowska',
     form: 'Ćwiczenia',

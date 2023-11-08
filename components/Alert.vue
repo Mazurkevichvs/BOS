@@ -23,7 +23,7 @@ defineProps({
         border-radius: 5px;
         margin-top: 10px;
     }
-    @media screen and (max-width: 425px) {
+    @media screen and (max-width: 430px) {
         .alert{
             font-size: 14px;
         }

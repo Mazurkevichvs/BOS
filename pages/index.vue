@@ -85,7 +85,7 @@ p {
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 430px) {
   .logo__login {
     max-width: 300px;
     margin-bottom: 30px;

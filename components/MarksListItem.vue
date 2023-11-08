@@ -1,14 +1,19 @@
+<script setup>
+  const { subject } = defineProps(['subject']);
+const { mark, subjectName, teacher, form } = subject;
+</script>
+
 <template>
   <div class="mark__item__wrapper">
-    <div class="mark__item__value">5</div>
+    <div class="mark__item__value">{{ mark }}</div>
     <div class="mark__item__names">
-      <p class="mark__item__title">Zaawansowane projektowanie aplikacji mobilnych</p>
-      <p class="mark__item__subtitle">mgr inż. Szymon Guzik</p>
-      <p class="mark__item__subtitle class__type">Wykład</p>
+      <p class="mark__item__title">{{ subjectName }}</p>
+      <p class="mark__item__subtitle">{{ teacher }}</p>
+      <p class="mark__item__subtitle class__type">{{ form }}</p>
     </div>
     <div class="mark__item__icons">
-      <img src="~assets/img/edit-icon.png" alt="" />
-      <img src="~assets/img/delete-icon.png" alt="" />
+      <img src="~assets/img/edit-icon.png" alt="edit" />
+      <img src="~assets/img/delete-icon.png" alt="delete" />
     </div>
   </div>
 </template>
@@ -86,7 +91,7 @@
 }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 430px) {
   .mark__item__wrapper {
     margin-bottom: 25px;
   }

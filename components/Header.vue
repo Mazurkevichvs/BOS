@@ -82,7 +82,7 @@ header {
 }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 430px) {
   header {
     padding: 25px 30px;
   }
