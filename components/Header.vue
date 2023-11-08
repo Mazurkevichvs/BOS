@@ -1,15 +1,23 @@
+<script setup>
+const loginValues = inject('loginValues')
+const handleLogout = () => {
+  loginValues.login.value = ''
+  loginValues.password.value = ''
+  loginValues.password2.value = ''
+  navigateTo('/')
+}
+</script>
+
 <template>
   <header>
     <div class="logo">
       <img src="~/assets/img/logo.png" alt="WSB Merito" />
-      <p class="username">Imię Nazwisko</p>
+      <p class="username">{{loginValues.login.value}}</p>
     </div>
-    <NuxtLink to="/">
-      <div class="logout">
+      <div @click="handleLogout()" class="logout">
         <img src="~/assets/img/logout.png" alt="" />
         <p>Wyjść</p>
       </div>
-    </NuxtLink>
   </header>
 </template>
 
@@ -19,7 +27,7 @@ header {
   justify-content: space-between;
   align-items: center;
   color: #000;
-  padding: 40px 0;
+  padding: 40px 20px;
   a {
     text-decoration: none;
     color: #000;

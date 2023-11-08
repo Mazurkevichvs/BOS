@@ -1,24 +1,16 @@
 <script setup>
-const login = ref('');
-const password = ref('');
-const password2 = ref('');
-const error = ref(null);
-
+const {login, password, password2, error} = inject('loginValues')
 const validateForm = (e) => {
   e.preventDefault()
   error.value = null;
-
   if (!login.value || !password.value || !password2.value) {
     error.value = 'Wszystkie pola są wymagane';
   } else if (password.value !== password2.value) {
     error.value = 'Wprowadź poprawne hasło';
   } else {
-    console.log(123)
-    // navigateTo('/Home')
+    navigateTo('/Home')
   }
-  console.log(login.value, password.value, password2.value)
 };
-
 </script>
 
 <template>
@@ -33,6 +25,7 @@ const validateForm = (e) => {
         <Input v-model="password2" imgName="password" placeholder="Powtórz hasło" inputType="password" id="password2" />
         <button @click="validateForm" class="login__button">Zaloguj się</button>
       </form>
+      <Alert v-if="error" :msg="error"/>
     </div>
   </div>
 </template>

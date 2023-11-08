@@ -1,8 +1,8 @@
 <script setup>
-import { onMounted } from 'vue';
 onMounted(() => {
   document.body.style.backgroundColor = '#fff'
 }) 
+
 </script>
 
 <template>

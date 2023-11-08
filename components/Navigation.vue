@@ -1,15 +1,23 @@
+<script setup>
+const isHomePage = inject('isHomePage');
+</script>
+
 <template>
   <div class="navigation">
-    <div class="nav__page">
-      <img src="~assets/img/home-icon.png" alt="Home" class="home__icon" />
-      <p>Home</p>
+    <div @click="() => (isHomePage = true)" class="nav__page">
+      <img :src="`_nuxt/assets/img/home-icon${isHomePage ? '-active' : ''}.png`" alt="Home" class="home__icon" />
+      <p :class="isHomePage ? 'active' : ''">Home</p>
     </div>
     <div class="add__btn">
       <img src="~assets/img/plus.png" alt="add" />
     </div>
-    <div class="nav__page">
-      <p>Oceny</p>
-      <img src="~assets/img/marks-icon.png" alt="Oceny" class="marks__icon" />
+    <div @click="() => (isHomePage = false)" class="nav__page">
+      <p :class="!isHomePage ? 'active' : ''">Oceny</p>
+      <img
+        :src="`_nuxt/assets/img/marks-icon${!isHomePage ? '-active' : ''}.png`"
+        alt="Oceny"
+        class="marks__icon"
+      />
     </div>
   </div>
 </template>
@@ -62,10 +70,14 @@
     color: #2979f2;
   }
 }
+.active {
+  color: #2979f2;
+}
+
 @media screen and (min-width: 426px) and (max-width: 768px) {
   .navigation {
-  margin-bottom: 30px;
-  padding: 10px 25px;
+    margin-bottom: 30px;
+    padding: 10px 25px;
   }
 }
 
@@ -77,25 +89,25 @@
     padding: 10px 20px;
     position: sticky;
     bottom: 20px;
-  } 
-  .home__icon {
-  margin-right: 10px;
-  width: 25px;
-  height: 25px;
-}
-.marks__icon {
-  margin-left: 10px;
-  width: 25px;
-}
-.nav__page {
-  font-size: 14px;
-}
-.add__btn {
-  height: 50px;
-  width: 50px;
-  img {
-    width: 20px;
   }
-}
+  .home__icon {
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+  }
+  .marks__icon {
+    margin-left: 10px;
+    width: 25px;
+  }
+  .nav__page {
+    font-size: 14px;
+  }
+  .add__btn {
+    height: 50px;
+    width: 50px;
+    img {
+      width: 20px;
+    }
+  }
 }
 </style>
