@@ -1,19 +1,57 @@
 <script setup>
-  const { subject } = defineProps(['subject']);
-const { mark, subjectName, teacher, form } = subject;
+const { subject } = defineProps(['subject']);
+const subjectList = inject('subjectList');
+const isEditing = ref(false);
+const { id, mark, subjectName, teacher, form } = subject;
+
+const deleteSubject = () => {
+  subjectList.value = subjectList.value.filter((el) => el.id !== id);
+};
+const handleEditing = () => {
+  const updatedSubject = {
+    ...subjectItem,
+    mark: mark,
+    subjectName: subjectName,
+    teacher: teacher,
+    form: form
+  };
+  isEditing.value = false
+}
 </script>
 
 <template>
-  <div class="mark__item__wrapper">
-    <div class="mark__item__value">{{ mark }}</div>
+  <div :class="`mark__item__wrapper ${isEditing ? 'edit' : ''}`">
+    <div class="mark__item__value__wrapper">
+      <div :class="`mark__item__value ${isEditing ? 'edit__mark' : ''}`">{{ mark }}</div>
+      <div v-if="isEditing" class="mark__item__value__btn__wrapper">
+        <div class="mark__item__value__btn">+</div>
+        <div class="mark__item__value__btn">-</div>
+      </div>
+    </div>
     <div class="mark__item__names">
-      <p class="mark__item__title">{{ subjectName }}</p>
+      <template v-if="!isEditing">
+        <p class="mark__item__title">{{ subjectName }}</p>
       <p class="mark__item__subtitle">{{ teacher }}</p>
-      <p class="mark__item__subtitle class__type">{{ form }}</p>
+      <p class="mark__item__subtitle subject__form">{{ form }}</p>
+      </template>
+      <template v-else>
+        <EditInput v-model="subjectName" placeholder="Nazwa przedmiotu" id="subjectName"/>
+        <EditInput v-model="teacher" placeholder="Nazwa przedmiotu" id="subjectName"/>
+        <EditInput additionalClass="subject__form" v-model="form" placeholder="Nazwa przedmiotu" id="subjectName"/>
+      </template>
+      
     </div>
     <div class="mark__item__icons">
-      <img src="~assets/img/edit-icon.png" alt="edit" />
-      <img src="~assets/img/delete-icon.png" alt="delete" />
+      <img
+        v-if="isEditing"
+        @click="handleEditing()"
+        src="~assets/img/accept-icon.png"
+        alt="accept"
+      />
+      <template v-else>
+        <img @click="() => (isEditing = true)" src="~assets/img/edit-icon.png" alt="edit" />
+        <img @click="deleteSubject()" src="~assets/img/delete-icon.png" alt="delete" />
+      </template>
     </div>
   </div>
 </template>
@@ -24,6 +62,15 @@ const { mark, subjectName, teacher, form } = subject;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+}
+.mark__item__value__wrapper {
+  display: flex;
+  margin-right: 10px;
+}
+.mark__item__value__btn__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .mark__item__value {
   color: #000;
@@ -36,7 +83,7 @@ const { mark, subjectName, teacher, form } = subject;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 .mark__item__names {
   display: flex;
@@ -49,6 +96,9 @@ const { mark, subjectName, teacher, form } = subject;
     &:last-of-type {
       width: 20%;
     }
+  }
+  input:first-of-type {
+    margin-left: 0px;
   }
 }
 .mark__item__title {
@@ -68,6 +118,27 @@ const { mark, subjectName, teacher, form } = subject;
     }
   }
 }
+.edit {
+  padding: 10px;
+  background-color: #9fcfed;
+  border-radius: 15px;
+}
+.edit__mark {
+  background-color: #b6d2e3;
+}
+.mark__item__value__btn {
+  width: 17px;
+  height: 17px;
+  background-color: #b6d2e3;
+  border-radius: 2px;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 25px;
+}
 @media screen and (min-width: 426px) and (max-width: 768px) {
   .mark__item__wrapper {
     margin-bottom: 20px;
@@ -77,25 +148,25 @@ const { mark, subjectName, teacher, form } = subject;
     height: 60px;
   }
   .mark__item__names {
-  p {
-    font-size: 15px;
-  }
-}
-.mark__item__icons {
-    margin-left: 10px;
-  img {
-    &:last-of-type {
-      margin-left: 10px;
+    p {
+      font-size: 15px;
     }
   }
-}
+  .mark__item__icons {
+    margin-left: 10px;
+    img {
+      &:last-of-type {
+        margin-left: 10px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 430px) {
   .mark__item__wrapper {
     margin-bottom: 25px;
   }
-  .class__type {
+  .subject__form {
     display: none;
   }
   .mark__item__value {

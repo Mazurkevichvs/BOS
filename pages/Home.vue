@@ -1,36 +1,39 @@
 <script setup>
-const isHomePage = inject('isHomePage')
+import { SUBJECTLIST } from '~/assets/subjectList';
+const subjectList = ref(SUBJECTLIST);
+provide('subjectList', subjectList);
+const isHomePage = inject('isHomePage');
 onMounted(() => {
-  document.body.style.backgroundColor = '#fff'
-}) 
-
+  document.body.style.backgroundColor = '#fff';
+});
 </script>
 
 <template>
   <div class="container">
     <Header></Header>
     <main>
-      <Navigation/>
+      <Navigation />
       <div class="wrapper">
         <div class="inner__header">
           <h2 class="inner__title">{{ isHomePage ? 'Najnowsze oceny' : 'Wszystkie oceny' }}</h2>
-          <p @click="() => isHomePage = !isHomePage" class="inner__link">{{ isHomePage ? 'See all' : 'See less'}}</p>
+          <p @click="() => (isHomePage = !isHomePage)" class="inner__link">
+            {{ isHomePage ? 'See all' : 'See less' }}
+          </p>
         </div>
-        <MarksList/>
+        <MarksList />
       </div>
     </main>
   </div>
 </template>
 
 <style scoped lang="scss">
-
 main {
-    background-color: #EEF8FF;
-    border-radius: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 20px;
+  background-color: #eef8ff;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
 }
 .wrapper {
   max-width: 1060px;
@@ -50,7 +53,7 @@ main {
 
 .inner__link {
   font-size: 14px;
-  color: #399DDC;
+  color: #399ddc;
   cursor: pointer;
   &:hover {
     color: #0083d5;
@@ -71,7 +74,7 @@ main {
     border-bottom-right-radius: 0;
     padding: 20px;
     height: 100%;
-    justify-content: flex-end
+    justify-content: flex-end;
   }
   .inner__header {
     margin-bottom: 20px;
