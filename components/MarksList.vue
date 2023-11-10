@@ -1,7 +1,7 @@
 <script setup>
 import {SUBJECTLIST} from '../assets/subjectList'
 const isHomePage = inject('isHomePage')
-const filteredSubjects = () => isHomePage ? SUBJECTLIST.slice(0, 5) : SUBJECTLIST
+const filteredSubjects = () => isHomePage.value ? SUBJECTLIST.slice(0, 5) : SUBJECTLIST
 </script>
 
 <template>

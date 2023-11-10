@@ -1,6 +1,5 @@
 <script setup>
 const isHomePage = inject('isHomePage');
-console.log(isHomePage)
 </script>
 
 <template>

@@ -1,4 +1,5 @@
 <script setup>
+const isHomePage = inject('isHomePage')
 onMounted(() => {
   document.body.style.backgroundColor = '#fff'
 }) 
@@ -12,8 +13,8 @@ onMounted(() => {
       <Navigation/>
       <div class="wrapper">
         <div class="inner__header">
-          <h2 class="inner__title">Najnowsze oceny</h2>
-          <p class="inner__link">See all</p>
+          <h2 class="inner__title">{{ isHomePage ? 'Najnowsze oceny' : 'Wszystkie oceny' }}</h2>
+          <p @click="() => isHomePage = !isHomePage" class="inner__link">{{ isHomePage ? 'See all' : 'See less'}}</p>
         </div>
         <MarksList/>
       </div>
