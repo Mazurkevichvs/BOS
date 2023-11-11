@@ -1,5 +1,6 @@
 <script setup>
 const isHomePage = inject('isHomePage');
+defineEmits(['addNewMark'])
 </script>
 
 <template>
@@ -9,7 +10,7 @@ const isHomePage = inject('isHomePage');
       <p :class="isHomePage ? 'active' : ''">Home</p>
     </div>
     <div class="add__btn">
-      <img src="~assets/img/plus.png" alt="add" />
+      <img @click="$emit('addNewMark')" src="~assets/img/plus.png" alt="add" />
     </div>
     <div @click="() => (isHomePage = false)" class="nav__page">
       <p :class="!isHomePage ? 'active' : ''">Oceny</p>

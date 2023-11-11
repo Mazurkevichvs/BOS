@@ -1,45 +1,43 @@
 <script setup>
-const { subject } = defineProps(['subject']);
+const { id } = defineProps(['id']);
 const subjectList = inject('subjectList');
+const subjectItem = subjectList.value.find((el) => el.id === id);
 const isEditing = ref(false);
-const { id, mark, subjectName, teacher, form } = subject;
-
 const deleteSubject = () => {
   subjectList.value = subjectList.value.filter((el) => el.id !== id);
 };
 const handleEditing = () => {
-  const updatedSubject = {
-    ...subjectItem,
-    mark: mark,
-    subjectName: subjectName,
-    teacher: teacher,
-    form: form
-  };
   isEditing.value = false
+}
+const handleMarkChange = (action) => {
+  if(action === "plus" && +subjectItem.mark < 5) {
+    +subjectItem.mark++
+  } else if(action === "minus" && +subjectItem.mark > 0) {
+    +subjectItem.mark--
+  }
 }
 </script>
 
 <template>
   <div :class="`mark__item__wrapper ${isEditing ? 'edit' : ''}`">
     <div class="mark__item__value__wrapper">
-      <div :class="`mark__item__value ${isEditing ? 'edit__mark' : ''}`">{{ mark }}</div>
+      <div :class="`mark__item__value ${isEditing ? 'edit__mark' : ''}`">{{ subjectItem.mark }}</div>
       <div v-if="isEditing" class="mark__item__value__btn__wrapper">
-        <div class="mark__item__value__btn">+</div>
-        <div class="mark__item__value__btn">-</div>
+        <div @click="handleMarkChange('plus')" class="mark__item__value__btn">+</div>
+        <div @click="handleMarkChange('minus')"  class="mark__item__value__btn">-</div>
       </div>
     </div>
     <div class="mark__item__names">
       <template v-if="!isEditing">
-        <p class="mark__item__title">{{ subjectName }}</p>
-      <p class="mark__item__subtitle">{{ teacher }}</p>
-      <p class="mark__item__subtitle subject__form">{{ form }}</p>
+        <p class="mark__item__title">{{ subjectItem.subjectName }}</p>
+      <p class="mark__item__subtitle">{{ subjectItem.teacher }}</p>
+      <p class="mark__item__subtitle subject__form">{{ subjectItem.form }}</p>
       </template>
       <template v-else>
-        <EditInput v-model="subjectName" placeholder="Nazwa przedmiotu" id="subjectName"/>
-        <EditInput v-model="teacher" placeholder="Nazwa przedmiotu" id="subjectName"/>
-        <EditInput additionalClass="subject__form" v-model="form" placeholder="Nazwa przedmiotu" id="subjectName"/>
-      </template>
-      
+        <EditInput v-model="subjectItem.subjectName" placeholder="Nazwa przedmiotu" id="subjectName"/>
+        <EditInput v-model="subjectItem.teacher" placeholder="Imię wykładowcy" id="subjectName"/>
+        <EditInput additionalClass="subject__form" v-model="subjectItem.form" placeholder="Rodzaj zajęć" id="subjectName"/>
+      </template>   
     </div>
     <div class="mark__item__icons">
       <img

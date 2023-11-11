@@ -6,13 +6,23 @@ const isHomePage = inject('isHomePage');
 onMounted(() => {
   document.body.style.backgroundColor = '#fff';
 });
+const addNewMark = () => {
+  const newSubjectItem = {
+    id: Date.now().toString(),
+    mark: 0,
+    subjectName: 'Nazwa przedmiotu',
+    teacher: 'Imię wykładowcy',
+    form: 'Rodzaj zajęć',
+  };
+  subjectList.value.unshift(newSubjectItem);
+};
 </script>
 
 <template>
   <div class="container">
     <Header></Header>
     <main>
-      <Navigation />
+      <Navigation @addNewMark="addNewMark"/>
       <div class="wrapper">
         <div class="inner__header">
           <h2 class="inner__title">{{ isHomePage ? 'Najnowsze oceny' : 'Wszystkie oceny' }}</h2>
