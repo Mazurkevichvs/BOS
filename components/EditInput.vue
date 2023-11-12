@@ -27,4 +27,10 @@ input {
     outline-color: #70b6e1;
   }
 }
+@media screen and (min-width: 431px) and (max-width: 768px) {
+  input {
+    font-size: 15px;
+    margin-left: 15px;
+  }
+}
 </style>

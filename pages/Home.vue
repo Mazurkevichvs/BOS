@@ -80,10 +80,7 @@ main {
   main {
     flex-direction: column-reverse;
     border-radius: 20px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     padding: 20px;
-    height: 100%;
     justify-content: flex-end;
   }
   .inner__header {

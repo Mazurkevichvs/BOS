@@ -41,6 +41,7 @@ const handleMarkChange = (action) => {
     </div>
     <div class="mark__item__icons">
       <img
+        class="edit__icon"
         v-if="isEditing"
         @click="handleEditing()"
         src="~assets/img/accept-icon.png"
@@ -116,6 +117,9 @@ const handleMarkChange = (action) => {
     }
   }
 }
+.edit__icon {
+  margin-left: 0 !important;
+}
 .edit {
   padding: 10px;
   background-color: #9fcfed;
@@ -137,7 +141,7 @@ const handleMarkChange = (action) => {
   font-weight: 600;
   font-size: 25px;
 }
-@media screen and (min-width: 426px) and (max-width: 768px) {
+@media screen and (min-width: 431px) and (max-width: 768px) {
   .mark__item__wrapper {
     margin-bottom: 20px;
   }
@@ -157,6 +161,15 @@ const handleMarkChange = (action) => {
         margin-left: 10px;
       }
     }
+  }
+}
+
+@media screen and (min-width: 431px) and (max-width: 550px) {
+  .subject__form {
+    display: none;
+  }
+  .mark__item__names p {
+    width: 50%;
   }
 }
 
