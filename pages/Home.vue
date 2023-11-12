@@ -5,7 +5,10 @@ provide('subjectList', subjectList);
 const isHomePage = inject('isHomePage');
 onMounted(() => {
   document.body.style.backgroundColor = '#fff';
+  const storedSubjectsData = JSON.parse(localStorage.getItem('subjects'));
+  if (storedSubjectsData) subjectList.value = storedSubjectsData;
 });
+
 const addNewMark = () => {
   const newSubjectItem = {
     id: Date.now().toString(),
@@ -14,15 +17,18 @@ const addNewMark = () => {
     teacher: 'Imię wykładowcy',
     form: 'Rodzaj zajęć',
   };
-  subjectList.value.unshift(newSubjectItem);
+  subjectList.value = [newSubjectItem, ...subjectList.value];
 };
+watch(subjectList, (newSubjectList) => {
+  localStorage.setItem('subjects', JSON.stringify(newSubjectList));
+});
 </script>
 
 <template>
   <div class="container">
     <Header></Header>
     <main>
-      <Navigation @addNewMark="addNewMark"/>
+      <Navigation @addNewMark="addNewMark" />
       <div class="wrapper">
         <div class="inner__header">
           <h2 class="inner__title">{{ isHomePage ? 'Najnowsze oceny' : 'Wszystkie oceny' }}</h2>

@@ -1,15 +1,22 @@
 <script setup>
-    defineProps({
-        additionalClass: String,
-        id: String,
-        placeholder: String,
-        modelValue: String
-    })
-    defineEmits(['update:modelValue'])
+defineProps({
+  additionalClass: String,
+  id: String,
+  placeholder: String,
+  modelValue: String,
+});
+defineEmits(['update:modelValue']);
 </script>
 
 <template>
-  <input :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" :class="`edit__input ${additionalClass ? additionalClass : ''}`" type="text" :placeholder="placeholder" :id="id"/>
+  <input
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+    :class="`edit__input ${additionalClass ? additionalClass : ''}`"
+    type="text"
+    :placeholder="placeholder"
+    :id="id"
+  />
 </template>
 
 <style scoped lang="scss">
@@ -31,6 +38,16 @@ input {
   input {
     font-size: 15px;
     margin-left: 15px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  input {
+    font-size: 14px;
+    height: 20px;
+    &:first-of-type {
+      margin-bottom: 8px;
+    }
   }
 }
 </style>

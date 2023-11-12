@@ -6,7 +6,7 @@ defineProps({
   id: String,
   modelValue: String,
 });
-defineEmits(['update:modelValue'])
+defineEmits(['update:modelValue']);
 </script>
 
 <template>

@@ -22,10 +22,10 @@ export const SUBJECTLIST = [
   },
   {
     id: '4',
-    mark: '4',
-    subjectName: 'Modelowanie i symulacja komputerowa',
-    teacher: 'mgr inż. Marek Ożarowski',
-    form: 'Ćwiczenia',
+    mark: '5',
+    subjectName: 'Język angielski',
+    teacher: 'dr Natalia Gogacz',
+    form: 'wykład',
   },
   {
     id: '5',

@@ -1,14 +1,15 @@
 <script setup>
-const {login, password, password2, error} = inject('loginValues')
+const { login, password, password2, error } = inject('loginValues');
 const validateForm = (e) => {
-  e.preventDefault()
+  e.preventDefault();
   error.value = null;
   if (!login.value || !password.value || !password2.value) {
     error.value = 'Wszystkie pola są wymagane';
   } else if (password.value !== password2.value) {
     error.value = 'Wprowadź poprawne hasło';
   } else {
-    navigateTo('/Home')
+    localStorage.setItem('login', JSON.stringify(login.value));
+    navigateTo('/Home');
   }
 };
 </script>
@@ -20,12 +21,30 @@ const validateForm = (e) => {
       <h1>Zaloguj się</h1>
       <p>Zaloguj się za pomocą imienia i nazwiska</p>
       <form>
-        <Input v-model="login" imgName="login" placeholder="Imię Nazwisko" inputType="text" id="login" />
-        <Input v-model="password" imgName="password" placeholder="Hasło" inputType="password" id="password" />
-        <Input v-model="password2" imgName="password" placeholder="Powtórz hasło" inputType="password" id="password2" />
+        <Input
+          v-model="login"
+          imgName="login"
+          placeholder="Imię Nazwisko"
+          inputType="text"
+          id="login"
+        />
+        <Input
+          v-model="password"
+          imgName="password"
+          placeholder="Hasło"
+          inputType="password"
+          id="password"
+        />
+        <Input
+          v-model="password2"
+          imgName="password"
+          placeholder="Powtórz hasło"
+          inputType="password"
+          id="password2"
+        />
         <button @click="validateForm" class="login__button">Zaloguj się</button>
       </form>
-      <Alert v-if="error" :msg="error"/>
+      <Alert v-if="error" :msg="error" />
     </div>
   </div>
 </template>

@@ -1,12 +1,16 @@
 <script setup>
 const isHomePage = inject('isHomePage');
-defineEmits(['addNewMark'])
+defineEmits(['addNewMark']);
 </script>
 
 <template>
   <div class="navigation">
     <div @click="() => (isHomePage = true)" class="nav__page">
-      <img :src="`_nuxt/assets/img/home-icon${isHomePage ? '-active' : ''}.png`" alt="Home" class="home__icon" />
+      <img
+        :src="`_nuxt/assets/img/home-icon${isHomePage ? '-active' : ''}.png`"
+        alt="Home"
+        class="home__icon"
+      />
       <p :class="isHomePage ? 'active' : ''">Home</p>
     </div>
     <div class="add__btn">

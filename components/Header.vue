@@ -1,23 +1,29 @@
 <script setup>
-const loginValues = inject('loginValues')
+const loginValues = inject('loginValues');
 const handleLogout = () => {
-  loginValues.login.value = ''
-  loginValues.password.value = ''
-  loginValues.password2.value = ''
-  navigateTo('/')
-}
+  loginValues.login.value = '';
+  loginValues.password.value = '';
+  loginValues.password2.value = '';
+  localStorage.removeItem('login');
+  localStorage.removeItem('subjects');
+  navigateTo('/');
+};
+onMounted(() => {
+  const storedLoginData = JSON.parse(localStorage.getItem('login'));
+  if (storedLoginData) loginValues.login.value = storedLoginData;
+});
 </script>
 
 <template>
   <header>
     <div class="logo">
       <img src="~/assets/img/logo.png" alt="WSB Merito" />
-      <p class="username">{{loginValues.login.value}}</p>
+      <p class="username">{{ loginValues.login.value }}</p>
     </div>
-      <div @click="handleLogout()" class="logout">
-        <img src="~/assets/img/logout.png" alt="" />
-        <p>Wyjść</p>
-      </div>
+    <div @click="handleLogout()" class="logout">
+      <img src="~/assets/img/logout.png" alt="" />
+      <p>Wyjść</p>
+    </div>
   </header>
 </template>
 
@@ -67,19 +73,19 @@ header {
     }
   }
   .username {
-  font-size: 28px;
-  margin-left: 10px;
-}
-.logout {
-  padding: 0px;
-  p {
     font-size: 28px;
-    margin-left: 5px;
+    margin-left: 10px;
   }
-  img {
-    width:40px
+  .logout {
+    padding: 0px;
+    p {
+      font-size: 28px;
+      margin-left: 5px;
+    }
+    img {
+      width: 40px;
+    }
   }
-}
 }
 
 @media screen and (max-width: 430px) {
